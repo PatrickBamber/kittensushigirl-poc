@@ -1,0 +1,49 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff6eb4;
+  --hot-pink: #ff1493;
+  --purple: #b44fff;
+  --dark-purple: #7b2fff;
+  --cyan: #00e5ff;
+  --yellow: #ffe600;
+  --bg-dark: #0d0010;
+  --bg-mid: #1a0028;
+  --text-light: #f8e8ff;
+  --text-dim: #c9a8e0;
+  --card-bg: rgba(255, 110, 180, 0.08);
+  --card-border: rgba(255, 110, 180, 0.25);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0d0015 0%, #1a0533 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cyan);
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}

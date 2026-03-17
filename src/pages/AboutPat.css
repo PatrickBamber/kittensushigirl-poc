@@ -1,0 +1,56 @@
+.about-pat {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.avatar { font-size: 60px; margin-bottom: 20px; }
+
+h1 { 
+  font-size: 2.5rem; 
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #ff6b9d, #c44569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.verdict {
+  background: rgba(255, 107, 157, 0.15);
+  border: 2px solid #ff6b9d;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+}
+
+.score { font-size: 4rem; font-weight: bold; color: #ff6b9d; }
+.verdict h2 { color: #ff6b9d; margin-bottom: 15px; }
+.verdict p { line-height: 1.8; font-size: 1.1rem; }
+
+.pros-cons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.pros { background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88; }
+.cons { background: rgba(255, 107, 157, 0.1); border: 1px solid #ff6b9d; }
+
+.box h3 { margin-bottom: 15px; }
+.pros h3 { color: #00ff88; }
+.cons h3 { color: #ff6b9d; }
+
+.box ul { list-style: none; text-align: left; }
+.box li { padding: 8px 0; }
+.box li::before { margin-right: 8px; }
+.pros li::before { content: "✅ "; }
+.cons li::before { content: "🤔 "; }
