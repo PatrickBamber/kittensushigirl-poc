@@ -87,14 +87,12 @@ export default function Home() {
             <Link to="/game" className="cta-btn cta-secondary">
               Play a game 🎮
             </Link>
-            <a 
-              href="https://github.com/PatrickBamber/kittensushigirl-poc" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <Link 
+              to="/osborne" 
               className="cta-btn cta-tertiary"
             >
               Hello Developers! 👋
-            </a>
+            </Link>
           </div>
         </div>
 

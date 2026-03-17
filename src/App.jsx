@@ -3,6 +3,7 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import AboutPat from './pages/AboutPat'
 import PacMan from './pages/PacMan'
+import Osborne from './pages/Osborne'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pat" element={<AboutPat />} />
           <Route path="/game" element={<PacMan />} />
+          <Route path="/osborne" element={<Osborne />} />
         </Routes>
       </main>
     </BrowserRouter>
