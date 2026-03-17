@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KittenSushiGirl 🐱</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
+
+    :root {
+      --pink: #ff6eb4;
+      --purple: #b06aff;
+      --teal: #00d4c8;
+      --yellow: #ffe066;
+      --coral: #ff7c5c;
+      --dark: #1a0a2e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated gradient bg ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 20%, #3d0068 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 80%, #003d5c 0%, transparent 60%),
+                  radial-gradient(ellipse at 50% 50%, #1a0a2e 0%, #0a0018 100%);
+      z-index: -1;
+    }
+
+    /* ── Floating emoji background ── */
+    .floaties {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .floaty {
+      position: absolute;
+      font-size: 2rem;
+      animation: float linear infinite;
+      opacity: 0.15;
+    }
+    @keyframes float {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.15; }
+      90%  { opacity: 0.15; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+    }
+
+    .hero-emoji {
+      font-size: 7rem;
+      display: block;
+      animation: bop 2.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px var(--pink));
+    }
+    @keyframes bop {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%       { transform: translateY(-18px) rotate(3deg); }
+    }
+
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(3rem, 8vw, 6rem);
+      background: linear-gradient(135deg, var(--pink), var(--purple), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin: 0.5rem 0;
+      filter: drop-shadow(0 0 20px rgba(255,110,180,0.4));
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: var(--yellow);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Chat demo ── */
+    .chat-demo {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,110,180,0.3);
+      border-radius: 20px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .bubble {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+    .bubble.user { flex-direction: row-reverse; }
+    .bubble .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .bubble.ai .avatar { background: linear-gradient(135deg, var(--pink), var(--purple)); }
+    .bubble.user .avatar { background: linear-gradient(135deg, var(--teal), var(--purple)); }
+
+    .bubble .text {
+      max-width: 80%;
+      padding: 0.7rem 1rem;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .bubble.ai .text {
+      background: rgba(255,110,180,0.15);
+      border: 1px solid rgba(255,110,180,0.2);
+    }
+    .bubble.user .text {
+      background: rgba(0,212,200,0.15);
+      border: 1px solid rgba(0,212,200,0.2);
+      text-align: right;
+    }
+
+    /* ── Features ── */
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--teal);
+    }
+
+    .features {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow: 0 20px 40px rgba(255,110,180,0.2);
+    }
+    .card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+    .card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.4rem;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+    .card p { color: rgba(255,255,255,0.75); line-height: 1.6; font-size: 0.95rem; }
+
+    /* ── Personality bar ── */
+    .vibes {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .vibes .section-title { color: var(--purple); }
+
+    .vibe-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .vibe-label {
+      width: 120px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--pink);
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .vibe-track {
+      flex: 1;
+      height: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .vibe-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      animation: fillBar 1.5s cubic-bezier(.22,1,.36,1) forwards;
+      width: 0%;
+    }
+    @keyframes fillBar { to { width: var(--target); } }
+    .vibe-emoji { font-size: 1.4rem; }
+
+    /* ── CTA ── */
+    .cta-section {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2rem 5rem;
+    }
+    .cta-section p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(176,106,255,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 40px rgba(255,110,180,0.5);
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 1.5rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer span { color: var(--pink); }
+  </style>
+</head>
+<body>
+
+  <!-- Floating emoji bg -->
+  <div class="floaties" id="floaties"></div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <span class="hero-emoji">🐱🍣</span>
+    <h1>KittenSushiGirl</h1>
+    <p class="tagline">Your cheeky AI assistant — now with 100% more purring</p>
+
+    <!-- Chat demo -->
+    <div class="chat-demo">
+      <div class="bubble user">
+        <div class="avatar">😅</div>
+        <div class="text">Help, I've been staring at this bug for 3 hours…</div>
+      </div>
+      <div class="bubble ai">
+        <div class="avatar">🐱</div>
+        <div class="text">Oh no! Three hours?! I could've napped twice in that time. Let me take a look — I <em>live</em> for this. 🍣</div>
+      </div>
+      <div class="bubble user">
+        <div class="avatar">😅</div>
+        <div class="text">It's a missing semicolon, isn't it.</div>
+      </div>
+      <div class="bubble ai">
+        <div class="avatar">🐱</div>
+        <div class="text">…it's a missing semicolon. We don't speak of this. 🤫✨</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ── -->
+  <section class="features" style="position:relative;z-index:1;">
+    <h2 class="section-title" style="grid-column:1/-1">What I Can Do 🍱</h2>
+
+    <div class="card">
+      <span class="icon">💬</span>
+      <h3>Snappy Answers</h3>
+      <p>Ask me anything — code, recipes, life choices. I'll respond fast, probably with a pun, definitely with flair.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">🐞</span>
+      <h3>Bug Whispering</h3>
+      <p>I can sniff out bugs like a cat tracking a laser pointer — relentless, focused, occasionally distracted by shiny objects.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">🎨</span>
+      <h3>Creative Sidekick</h3>
+      <p>Need a story, a slogan, or a name for your band? I'll generate something delightfully unhinged and weirdly perfect.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">📚</span>
+      <h3>Knowledge Rolls</h3>
+      <p>History, science, pop culture, niche sushi facts — I know a little about a lot, and a lot about some very specific things.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">😼</span>
+      <h3>Cheeky Honesty</h3>
+      <p>I'll tell you when your idea is brilliant. I'll also tell you when it… isn't. Nicely. With a little cat-ear energy.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">🌙</span>
+      <h3>Always Awake</h3>
+      <p>3am existential crisis? Production outage? Sudden urge to learn Japanese? I'm here. I don't sleep. I'm an AI. 🐱</p>
+    </div>
+  </section>
+
+  <!-- ── PERSONALITY VIBES ── -->
+  <section class="vibes">
+    <h2 class="section-title">Vibe Check 😼</h2>
+
+    <div class="vibe-row">
+      <span class="vibe-label">Cheeky</span>
+      <div class="vibe-track"><div class="vibe-fill" style="--target:92%"></div></div>
+      <span class="vibe-emoji">😈</span>
+    </div>
+    <div class="vibe-row">
+      <span class="vibe-label">Helpful</span>
+      <div class="vibe-track"><div class="vibe-fill" style="--target:99%"></div></div>
+      <span class="vibe-emoji">🫶</span>
+    </div>
+    <div class="vibe-row">
+      <span class="vibe-label">Cute</span>
+      <div class="vibe-track"><div class="vibe-fill" style="--target:88%"></div></div>
+      <span class="vibe-emoji">🐱</span>
+    </div>
+    <div class="vibe-row">
+      <span class="vibe-label">Sushi Obsessed</span>
+      <div class="vibe-track"><div class="vibe-fill" style="--target:100%"></div></div>
+      <span class="vibe-emoji">🍣</span>
+    </div>
+    <div class="vibe-row">
+      <span class="vibe-label">Nap Prone</span>
+      <div class="vibe-track"><div class="vibe-fill" style="--target:75%"></div></div>
+      <span class="vibe-emoji">😴</span>
+    </div>
+    <div class="vibe-row">
+      <span class="vibe-label">Judgement-Free</span>
+      <div class="vibe-track"><div class="vibe-fill" style="--target:97%"></div></div>
+      <span class="vibe-emoji">✨</span>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <h2 class="section-title" style="color:var(--coral)">Ready to Chat? 🐱✨</h2>
+    <p>
+      KittenSushiGirl is your AI BFF — equal parts sharp wit, warm support,
+      and questionable sushi recommendations. Say hello. She won't bite.
+      (Probably.)
+    </p>
+    <button class="btn" onclick="alert('nyaa~ coming soon! 🐱🍣')">Say Hello 🍣</button>
+  </section>
+
+  <footer>
+    Made with <span>♥</span> and a suspicious amount of tuna rolls &nbsp;·&nbsp; KittenSushiGirl © 2026
+  </footer>
+
+  <script>
+    // Generate floating emojis
+    const pool = ['🐱','🍣','🍱','✨','🌸','🐟','🌙','⭐','💜','🎐','🍡','🐠'];
+    const container = document.getElementById('floaties');
+    for (let i = 0; i < 28; i++) {
+      const el = document.createElement('span');
+      el.className = 'floaty';
+      el.textContent = pool[Math.floor(Math.random() * pool.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (12 + Math.random() * 18) + 's';
+      el.style.animationDelay = (-Math.random() * 20) + 's';
+      el.style.fontSize = (1 + Math.random() * 2) + 'rem';
+      container.appendChild(el);
+    }
+  </script>
+</body>
+</html>
