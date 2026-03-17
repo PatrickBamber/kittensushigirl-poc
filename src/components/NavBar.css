@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   padding: 0 2rem;
   height: 64px;
   background: rgba(13, 0, 16, 0.85);
@@ -12,6 +13,7 @@
   left: 0;
   right: 0;
   z-index: 100;
+  min-width: 0;
 }
 
 .navbar-brand {
@@ -20,6 +22,8 @@
   gap: 0.4rem;
   font-size: 1.2rem;
   font-weight: 700;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .brand-text {
@@ -37,6 +41,7 @@
 .navbar-links {
   display: flex;
   gap: 0.25rem;
+  flex-shrink: 0;
 }
 
 .nav-link {
@@ -61,15 +66,56 @@
   border-color: rgba(255, 110, 180, 0.4);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .navbar {
     padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 1rem;
+    gap: 10px;
   }
+
+  .navbar-brand {
+    flex-shrink: 0;
+  }
+
+  .brand-cat,
+  .brand-sushi {
+    font-size: 1.1rem;
+  }
+
   .brand-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
   .nav-link {
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    padding: 8px 0.5rem;
+  }
+
+  .brand-cat,
+  .brand-sushi {
+    display: none;
+  }
+
+  .brand-text {
     font-size: 0.85rem;
+  }
+
+  .nav-link {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.7rem;
   }
 }
