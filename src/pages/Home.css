@@ -114,6 +114,18 @@
   color: var(--cyan);
 }
 
+.cta-tertiary {
+  background: transparent;
+  color: var(--yellow);
+  border: 1px solid var(--yellow);
+}
+
+.cta-tertiary:hover {
+  background: rgba(255, 230, 0, 0.1);
+  transform: translateY(-2px);
+  color: var(--yellow);
+}
+
 /* Traits */
 .traits-section {
   width: 100%;
