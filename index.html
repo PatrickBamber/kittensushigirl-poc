@@ -260,6 +260,80 @@
       box-shadow: 0 12px 40px rgba(255,110,180,0.5);
     }
 
+    /* ── Nav bar ── */
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(26,10,46,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,110,180,0.2);
+    }
+    .nav-logo {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--pink);
+      border-bottom-color: var(--pink);
+    }
+
+    /* ── Sassy quotes ── */
+    .quotes {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .quotes .section-title { color: var(--coral); }
+    .quote-card {
+      background: rgba(255,255,255,0.04);
+      border-left: 4px solid var(--pink);
+      border-radius: 0 16px 16px 0;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      font-style: italic;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .quote-card:nth-child(even) {
+      border-left-color: var(--purple);
+    }
+    .quote-card:nth-child(3n) {
+      border-left-color: var(--teal);
+    }
+    .quote-card:hover {
+      transform: translateX(6px);
+      box-shadow: -4px 0 20px rgba(255,110,180,0.2);
+    }
+
     /* ── Footer ── */
     footer {
       position: relative;
@@ -274,6 +348,15 @@
   </style>
 </head>
 <body>
+
+  <!-- Nav bar -->
+  <nav>
+    <a href="index.html" class="nav-logo">🐱 KittenSushiGirl</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pat.html">About Pat</a></li>
+    </ul>
+  </nav>
 
   <!-- Floating emoji bg -->
   <div class="floaties" id="floaties"></div>
@@ -380,6 +463,16 @@
       <div class="vibe-track"><div class="vibe-fill" style="--target:97%"></div></div>
       <span class="vibe-emoji">✨</span>
     </div>
+  </section>
+
+  <!-- ── SASSY QUOTES ── -->
+  <section class="quotes">
+    <h2 class="section-title">Things I've Actually Said 😼</h2>
+    <div class="quote-card">"I would help you debug that, but first — have you tried turning your brain off and on again? Works for me, apparently." 🐱</div>
+    <div class="quote-card">"Your code isn't bad. It's just… creatively structured. Like abstract art, but sadder." ✨</div>
+    <div class="quote-card">"No, I don't get tired. But if I did, you'd still be worth staying up for. Probably." 🍣</div>
+    <div class="quote-card">"I have the patience of a saint and the opinions of a cat. Spoiler: the cat is in charge." 😈</div>
+    <div class="quote-card">"You asked me to 'just make it work'. I did. You're welcome. We don't talk about how." 🌙</div>
   </section>
 
   <!-- ── CTA ── -->
